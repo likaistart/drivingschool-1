@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.df.dao.ExamDAO">
+  <resultMap id="BaseResultMap" type="com.df.domain.Exam">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="student_id" jdbcType="INTEGER" property="studentId" />
+    <result column="coach_id" jdbcType="INTEGER" property="coachId" />
+    <result column="exam_one" jdbcType="TIMESTAMP" property="examOne" />
+    <result column="exam_two" jdbcType="TIMESTAMP" property="examTwo" />
+    <result column="exam_three" jdbcType="TIMESTAMP" property="examThree" />
+    <result column="exam_four" jdbcType="TIMESTAMP" property="examFour" />
+    <result column="exam_time_one" jdbcType="TIMESTAMP" property="examTimeOne" />
+    <result column="exam_time_two" jdbcType="TIMESTAMP" property="examTimeTwo" />
+    <result column="exam_time_three" jdbcType="TIMESTAMP" property="examTimeThree" />
+    <result column="exam_time_four" jdbcType="TIMESTAMP" property="examTimeFour" />
+    <result column="result_one" jdbcType="REAL" property="resultOne" />
+    <result column="result_two" jdbcType="REAL" property="resultTwo" />
+    <result column="result_three" jdbcType="REAL" property="resultThree" />
+    <result column="result_four" jdbcType="REAL" property="resultFour" />
+    <result column="memo" jdbcType="VARCHAR" property="memo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, student_id, coach_id, exam_one, exam_two, exam_three, exam_four, exam_time_one, 
+    exam_time_two, exam_time_three, exam_time_four, result_one, result_two, result_three, 
+    result_four, memo
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from exam
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from exam
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.df.domain.Exam">
+    insert into exam (id, student_id, coach_id, 
+      exam_one, exam_two, exam_three, 
+      exam_four, exam_time_one, exam_time_two, 
+      exam_time_three, exam_time_four, result_one, 
+      result_two, result_three, result_four, 
+      memo)
+    values (#{id,jdbcType=INTEGER}, #{studentId,jdbcType=INTEGER}, #{coachId,jdbcType=INTEGER}, 
+      #{examOne,jdbcType=TIMESTAMP}, #{examTwo,jdbcType=TIMESTAMP}, #{examThree,jdbcType=TIMESTAMP}, 
+      #{examFour,jdbcType=TIMESTAMP}, #{examTimeOne,jdbcType=TIMESTAMP}, #{examTimeTwo,jdbcType=TIMESTAMP}, 
+      #{examTimeThree,jdbcType=TIMESTAMP}, #{examTimeFour,jdbcType=TIMESTAMP}, #{resultOne,jdbcType=REAL}, 
+      #{resultTwo,jdbcType=REAL}, #{resultThree,jdbcType=REAL}, #{resultFour,jdbcType=REAL}, 
+      #{memo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.df.domain.Exam">
+    insert into exam
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="studentId != null">
+        student_id,
+      </if>
+      <if test="coachId != null">
+        coach_id,
+      </if>
+      <if test="examOne != null">
+        exam_one,
+      </if>
+      <if test="examTwo != null">
+        exam_two,
+      </if>
+      <if test="examThree != null">
+        exam_three,
+      </if>
+      <if test="examFour != null">
+        exam_four,
+      </if>
+      <if test="examTimeOne != null">
+        exam_time_one,
+      </if>
+      <if test="examTimeTwo != null">
+        exam_time_two,
+      </if>
+      <if test="examTimeThree != null">
+        exam_time_three,
+      </if>
+      <if test="examTimeFour != null">
+        exam_time_four,
+      </if>
+      <if test="resultOne != null">
+        result_one,
+      </if>
+      <if test="resultTwo != null">
+        result_two,
+      </if>
+      <if test="resultThree != null">
+        result_three,
+      </if>
+      <if test="resultFour != null">
+        result_four,
+      </if>
+      <if test="memo != null">
+        memo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="studentId != null">
+        #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="coachId != null">
+        #{coachId,jdbcType=INTEGER},
+      </if>
+      <if test="examOne != null">
+        #{examOne,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examTwo != null">
+        #{examTwo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examThree != null">
+        #{examThree,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examFour != null">
+        #{examFour,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examTimeOne != null">
+        #{examTimeOne,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examTimeTwo != null">
+        #{examTimeTwo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examTimeThree != null">
+        #{examTimeThree,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examTimeFour != null">
+        #{examTimeFour,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resultOne != null">
+        #{resultOne,jdbcType=REAL},
+      </if>
+      <if test="resultTwo != null">
+        #{resultTwo,jdbcType=REAL},
+      </if>
+      <if test="resultThree != null">
+        #{resultThree,jdbcType=REAL},
+      </if>
+      <if test="resultFour != null">
+        #{resultFour,jdbcType=REAL},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.df.domain.Exam">
+    update exam
+    <set>
+      <if test="studentId != null">
+        student_id = #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="coachId != null">
+        coach_id = #{coachId,jdbcType=INTEGER},
+      </if>
+      <if test="examOne != null">
+        exam_one = #{examOne,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examTwo != null">
+        exam_two = #{examTwo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examThree != null">
+        exam_three = #{examThree,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examFour != null">
+        exam_four = #{examFour,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examTimeOne != null">
+        exam_time_one = #{examTimeOne,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examTimeTwo != null">
+        exam_time_two = #{examTimeTwo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examTimeThree != null">
+        exam_time_three = #{examTimeThree,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examTimeFour != null">
+        exam_time_four = #{examTimeFour,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resultOne != null">
+        result_one = #{resultOne,jdbcType=REAL},
+      </if>
+      <if test="resultTwo != null">
+        result_two = #{resultTwo,jdbcType=REAL},
+      </if>
+      <if test="resultThree != null">
+        result_three = #{resultThree,jdbcType=REAL},
+      </if>
+      <if test="resultFour != null">
+        result_four = #{resultFour,jdbcType=REAL},
+      </if>
+      <if test="memo != null">
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.df.domain.Exam">
+    update exam
+    set student_id = #{studentId,jdbcType=INTEGER},
+      coach_id = #{coachId,jdbcType=INTEGER},
+      exam_one = #{examOne,jdbcType=TIMESTAMP},
+      exam_two = #{examTwo,jdbcType=TIMESTAMP},
+      exam_three = #{examThree,jdbcType=TIMESTAMP},
+      exam_four = #{examFour,jdbcType=TIMESTAMP},
+      exam_time_one = #{examTimeOne,jdbcType=TIMESTAMP},
+      exam_time_two = #{examTimeTwo,jdbcType=TIMESTAMP},
+      exam_time_three = #{examTimeThree,jdbcType=TIMESTAMP},
+      exam_time_four = #{examTimeFour,jdbcType=TIMESTAMP},
+      result_one = #{resultOne,jdbcType=REAL},
+      result_two = #{resultTwo,jdbcType=REAL},
+      result_three = #{resultThree,jdbcType=REAL},
+      result_four = #{resultFour,jdbcType=REAL},
+      memo = #{memo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
