@@ -31,8 +31,8 @@ public class UserController {
 	private UserService userService;
 	
 	@RequestMapping("/tolist")
-	public ModelAndView list( ){
-		ModelAndView mv=null;
+	public ModelAndView list(){
+		ModelAndView mv = new ModelAndView("/user/user");;
 		
 		return mv;
 	}

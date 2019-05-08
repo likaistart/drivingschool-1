@@ -150,60 +150,125 @@
     <div class="span11" style=" border: solid; border-color: #DDDDDD;">
     <div class="span9 margin-top-one">
       <div class="row-fluid">
-        <h3 style="text-align: center;">学员新增</h3>
+        <h3 style="text-align: center;">添加学员</h3>
       </div>
     </div>
     
-    <div class="span9 margin-top-two">
+    <!-- <div class="span9 margin-top-two">
       <fieldset>
-        <legend>学员基本信息</legend>
+        <legend>标准房设置</legend>
       </fieldset>
-    </div>
+    </div> -->
     
-    <form action="${ctx}/Student/add.do" method="post" onsubmit="return verify()">
+    <form action="${ctx}/Student/toaddStudent.do" method="post"><!--  onsubmit="return verify()"> -->
 	    <div class="span12 margin-top-two">
 	      <div class="row-fluid">
 		      <div class="span5">
+			   	  <label class="labelroomnumber marginrighttwo">学员ID：</label>
+			      <!-- <input id="userId" name="userId" class="textone inputone"
+			       style="height:26px;" type="text" onblur="YZ(this.value)" onchange="onchangeOne()"> -->
+			       <input id="userId" name="userId" class="textone inputone"
+			       style="height:26px;" type="text" onchange="onchangeOne()">
+			       <div id="divOne">
+			         <label class="yansered" style="margin-top:18px;">*</label>
+			       </div>
+			  </div> 
+			  <div class="span5">
 			   	  <label class="labelroomnumber marginrighttwo">姓名：</label>
-			      <input id="roomNumberId" name="roomNumber" class="textone inputone"
-			       style="height:26px;" type="text" onblur="YZ(this.value)" onchange="onchangeOne()">
+			      <input id="userName" name="userName" class="textone inputone"
+			       style="height:26px;" type="text"  onchange="onchangeOne()"><!-- onblur="YZ(this.value)" -->
 			       <div id="divOne">
 			         <label class="yansered" style="margin-top:18px;">*</label>
 			       </div>
 			  </div> 
 			  <div class="span5 ">
 			   	  <label class="labelroomnumber marginrightone">性别：</label>
-			      <select name="roomStateID" class="cboone inputone">
-		            <c:forEach items="${listTwo}" var="item">
+			      <select name="sex" class="cboone inputone">
+		            <!--<c:forEach items="${listTwo}" var="item">
 			          <option value="${item.far_id}" <c:if test="${item.far_id==1}" >selected="selected"</c:if>>
 			            ${item.attributeDetailsName}
 			          </option>
-			        </c:forEach> 
+			        </c:forEach> -->
+			        <option value="0" selected="selected">女</option>
+			        <option value="1" selected="selected">男</option>
 		          </select>
 			  </div>
+			  <div class="span5">
+			   	  <label class="labelroomnumber marginrighttwo">注册日期</label>
+			      <input id="signTime" name="signTime" class="textone inputone" style="height:26px;" type="date" onblur="onchangeOne()">
+			  </div> 
+			  <div class="span5">
+			   	  <label class="labelroomnumber">科目：</label>
+			      <select name="credentID" class="cboone inputone">
+			        <option value="0" selected="selected">一</option>
+			        <option value="1" selected="selected">二</option>
+			        <option value="2" selected="selected">三</option>
+			        <option value="3" selected="selected">四</option>
+		          </select>
+			  </div>
+			  <div class="span5">
+			   	  <label class="labelroomnumber">手机号：</label>
+			      <input id="phone" name="phone" class="textone inputtwo radiusone" onblur="onchangeOne()"
+			      style="float:left;border-radius:0px; border-top-right-radius:4px; border-bottom-right-radius:4px; height:26px;" type="text">
+			      <div id="divThree">
+			         <label class="yansered" style="margin-top:18px;">*</label>
+			      </div>
+			   </div> 
+			   <div class="span5">
+			   	  <label class="labelroomnumber" style="margin-right:5px;">教练编号：</label>
+			      <input id="coachId" name="coachId" class="textone inputthree radiusone" onblur="onchangeOne()"
+			      style="float:left;border-radius:0px; border-top-right-radius:4px; border-bottom-right-radius:4px; height:26px;" type="text">
+			  </div> 
+			  <div class="span5">
+			   	  <label class="labelroomnumber">memo：</label>
+			      <input id="memo" name="memo" class="textone inputthree radiusone" onblur="onchangeOne()"
+			      style="float:left;border-radius:0px; border-top-right-radius:4px; border-bottom-right-radius:4px; height:26px;" type="text">
+			      <div id="divFive">
+			         <label class="yansered" style="margin-top:18px;">*</label>
+			      </div>
+			  </div>
+		  </div>
+	    </div>
+	    <!-- <div class="span12 margin-top-one">
+	      <div class="row-fluid">
+		      
+		  </div>
+	    </div>
+	    <div class="span12 margin-top-one" >
+	      <div class="row-fluid">
+	           <div class="span2" style="height:1px; margin-top:-25px;"></div>
+		       
+		  </div>
+		  <div class="row-fluid">
+		      
 		  </div>
 	    </div>
 	    <div class="span12 margin-top-one">
 	      <div class="row-fluid">
 		      <div class="span5">
-			   	  <label class="labelroomnumber marginrighttwo">床位数：</label>
-			      <input id="roomAmountId" name="roomAmount" class="textone inputone" style="height:26px;" type="text" onblur="onchangeOne()">
-			      <div id="divTwo">
+			   	  <label class="labelroomnumber marginrightthree">首段价格：</label>
+			      <div class="input-prepend"  style="float:left;">
+			        <span class="add-on" style="margin-top: 12px; height: 16px;">&yen;</span>
+			      </div>
+			      <input id="firstPriceId" name="firstPrice" class="textone inputthree radiusone" onblur="onchangeOne()"
+			      style="float:left;border-radius:0px; border-top-right-radius:4px; border-bottom-right-radius:4px; height:26px;" type="text">
+			      <div id="divSix">
 			         <label class="yansered" style="margin-top:18px;">*</label>
-			       </div>
+			      </div>
 			  </div> 
 			  <div class="span5">
-			   	  <label class="labelroomnumber">客房等级：</label>
-			      <select name="guestRoomLevelID" class="cboone inputone">
-		            <c:forEach items="${listOne}" var="item">
-			          <option value="${item.far_id}" <c:if test="${item.far_id==8}">selected="selected"</c:if>>
-			            ${item.attributeDetailsName}
-			          </option>
-			        </c:forEach> 
-		          </select>
+			   	  <label class="labelroomnumber">首段时长(小时)：</label>
+			      <div class="input-prepend"  style="float:left;">
+			        <span class="add-on" style="margin-top: 12px; height: 16px;">&yen;</span>
+			      </div>
+			      <input id="firstDurationId" name="firstDuration" class="textone inputthree radiusone" onblur="onchangeOne()"
+			      style="float:left;border-radius:0px; border-top-right-radius:4px; border-bottom-right-radius:4px; height:26px;" type="text">
+			      <div id="divSeven">
+			         <label class="yansered" style="margin-top:18px;">*</label>
+			      </div>
 			  </div>
-		  </div>
-	    </div>
+		    </div>
+	     </div> -->
 	
 		  <div class="span6" style="text-align:center;">
 		      <div class="row-fluid"  style="float:left;">
@@ -237,99 +302,99 @@
    
    $("#roomNumberId").focus();
  
-    function verify(){
-    if(document.getElementById("roomNumberId").value==""){
-	     alert("房间号  是必填项，不能为空哦！");
-	     document.getElementById("roomNumberId").focus();
-	     return false;
-      }else if(document.getElementById("roomAmountId").value==""){
-	     alert("床位数  是必填项，不能为空哦！");
-	     document.getElementById("roomAmountId").focus();
-	     return false;
-      }else if(document.getElementById("standardPriceDayId").value==""){
-	     alert("标准房价/天  是必填项，不能为空哦！");
-	     document.getElementById("standardPriceDayId").focus();
-	     return false;
-      }else if(document.getElementById("standardPriceId").value==""){
-	     alert("标准房价/小时  是必填项，不能为空哦！");
-	     document.getElementById("standardPriceId").focus();
-	     return false;
-      }else if(document.getElementById("maxDurationId").value==""){
-	     alert("时长限制（小时） 是必填项，不能为空哦！");
-	     document.getElementById("maxDurationId").focus();
-	     return false;
-      }else if(document.getElementById("firstPriceId").value==""){
-	     alert("首段价格  是必填项，不能为空哦！");
-	     document.getElementById("firstPriceId").focus();
-	     return false;
-      }else if(document.getElementById("firstDurationId").value==""){
-	     alert("首段时长  是必填项，不能为空哦！");
-	     document.getElementById("firstDurationId").focus();
-	     return false;
-      }else if(parseFloat(document.getElementById("firstDurationId").value)>parseFloat(document.getElementById("maxDurationId").value)){
-	     alert("首段时长 (小时) 不能大于  时长限制(小时)  的哦！");
-	     document.getElementById("firstDurationId").focus();
-	     return false;
-      }else if(parseFloat(document.getElementById("firstPriceId").value)>parseFloat(document.getElementById("standardPriceDayId").value)){
-	     alert("首段价格   不能大于  标准房价/天   的哦！");
-	     document.getElementById("firstPriceId").focus();
-	     return false;
-      }else if(parseFloat(document.getElementById("standardPriceId").value)>parseFloat(document.getElementById("standardPriceDayId").value)){
-	     alert("标准房价/小时     不能大于  标准房价/天   的哦！");
-	     document.getElementById("standardPriceId").focus();
-	     return false;
-      }else if(document.getElementById("roomNumberId").value.length>8){
-	     alert("你输入的  房间号   太过长了  请不要超出  8 位长度");
-	     document.getElementById("roomNumberId").focus();
-	     return false;
-      }else if(document.getElementById("roomAmountId").value.length>8){
-	     alert("你输入的  床位数   太过长了  请不要超出  8 位长度");
-	     document.getElementById("roomAmountId").focus();
-	     return false;
-      }else if(document.getElementById("standardPriceDayId").value.length>8){
-	     alert("你输入的   标准房价/天  太过长了  请不要超出  8 位长度");
-	     document.getElementById("standardPriceDayId").focus();
-	     return false;
-      }else if(document.getElementById("standardPriceId").value.length>8){
-	     alert("你输入的   标准房价/小时   太过长了  请不要超出  8 位长度");
-	     document.getElementById("standardPriceId").focus();
-	     return false;
-      }else if(document.getElementById("maxDurationId").value.length>8){
-	     alert("你输入的   时长限制（小时） 太过长了  请不要超出  8 位长度");
-	     document.getElementById("maxDurationId").focus();
-	     return false;
-      }else if(document.getElementById("firstPriceId").value.length>8){
-	     alert("你输入的    首段价格   太过长了  请不要超出  8 位长度");
-	     document.getElementById("firstPriceId").focus();
-	     return false;
-      }else if(document.getElementById("firstDurationId").value.length>8){
-	     alert("你输入的    首段时长   太过长了  请不要超出  8 位长度");
-	     document.getElementById("firstDurationId").focus();
-	     return false;
-      }else{
-         return true;
-      } 
-   }
+    //function verify(){
+    //if(document.getElementById("roomNumberId").value==""){
+	//     alert("房间号  是必填项，不能为空哦！");
+	//     document.getElementById("roomNumberId").focus();
+	//     return false;
+    //  }else if(document.getElementById("roomAmountId").value==""){
+	//     alert("床位数  是必填项，不能为空哦！");
+	//     document.getElementById("roomAmountId").focus();
+	//     return false;
+    //  }else if(document.getElementById("standardPriceDayId").value==""){
+	//     alert("标准房价/天  是必填项，不能为空哦！");
+	//     document.getElementById("standardPriceDayId").focus();
+	//     return false;
+    //  }else if(document.getElementById("standardPriceId").value==""){
+	//     alert("标准房价/小时  是必填项，不能为空哦！");
+	//     document.getElementById("standardPriceId").focus();
+	//     return false;
+    //  }else if(document.getElementById("maxDurationId").value==""){
+	//     alert("时长限制（小时） 是必填项，不能为空哦！");
+	//     document.getElementById("maxDurationId").focus();
+	//     return false;
+    //  }else if(document.getElementById("firstPriceId").value==""){
+	//     alert("首段价格  是必填项，不能为空哦！");
+	//     document.getElementById("firstPriceId").focus();
+	//     return false;
+    //  }else if(document.getElementById("firstDurationId").value==""){
+	//     alert("首段时长  是必填项，不能为空哦！");
+	//     document.getElementById("firstDurationId").focus();
+	//     return false;
+    //  }else if(parseFloat(document.getElementById("firstDurationId").value)>parseFloat(document.getElementById("maxDurationId").value)){
+	//     alert("首段时长 (小时) 不能大于  时长限制(小时)  的哦！");
+	//     document.getElementById("firstDurationId").focus();
+	//     return false;
+    //  }else if(parseFloat(document.getElementById("firstPriceId").value)>parseFloat(document.getElementById("standardPriceDayId").value)){
+	//     alert("首段价格   不能大于  标准房价/天   的哦！");
+	//     document.getElementById("firstPriceId").focus();
+	//     return false;
+    //  }else if(parseFloat(document.getElementById("standardPriceId").value)>parseFloat(document.getElementById("standardPriceDayId").value)){
+	//     alert("标准房价/小时     不能大于  标准房价/天   的哦！");
+	//     document.getElementById("standardPriceId").focus();
+	//     return false;
+    //  }else if(document.getElementById("roomNumberId").value.length>8){
+	//     alert("你输入的  房间号   太过长了  请不要超出  8 位长度");
+	//     document.getElementById("roomNumberId").focus();
+	//     return false;
+    //  }else if(document.getElementById("roomAmountId").value.length>8){
+	//     alert("你输入的  床位数   太过长了  请不要超出  8 位长度");
+	//     document.getElementById("roomAmountId").focus();
+	//     return false;
+    //  }else if(document.getElementById("standardPriceDayId").value.length>8){
+	//     alert("你输入的   标准房价/天  太过长了  请不要超出  8 位长度");
+	//     document.getElementById("standardPriceDayId").focus();
+	//     return false;
+    //  }else if(document.getElementById("standardPriceId").value.length>8){
+	//     alert("你输入的   标准房价/小时   太过长了  请不要超出  8 位长度");
+	//     document.getElementById("standardPriceId").focus();
+	 //    return false;
+    //  }else if(document.getElementById("maxDurationId").value.length>8){
+	 //    alert("你输入的   时长限制（小时） 太过长了  请不要超出  8 位长度");
+	 //    document.getElementById("maxDurationId").focus();
+	 //    return false;
+     // }else if(document.getElementById("firstPriceId").value.length>8){
+	 //    alert("你输入的    首段价格   太过长了  请不要超出  8 位长度");
+	 //    document.getElementById("firstPriceId").focus();
+	 //    return false;
+     // }else if(document.getElementById("firstDurationId").value.length>8){
+	 //    alert("你输入的    首段时长   太过长了  请不要超出  8 位长度");
+	 //    document.getElementById("firstDurationId").focus();
+	 //    return false;
+     // }else{
+     //    return true;
+     // } 
+   //}
    
    function YZ(value){
-     if(value!=""){
-       $.ajax({                                                      
-          cache:false,                                             //是否使用缓存提交 如果为TRUE 会调用浏览器的缓存 而不会提交
-          type: "POST",                                           //上面3行都是必须要的
-          url: '${ctx}/RoomSet/YZ.do',       //地址 type 带参数
-          data:"roomNumber="+value,                         // IDCardValue 自定义的。相当于name把值赋予给 他可以在servlet 获取
-          async:false,                                          // 是否 异步 提交
-          success: function (result) {                          // 不出现异常 进行立面方
-              if(result>=1){                                  
-                   alert("已存在此房间号，请另取房间号！");                     //提示框
-                   document.getElementById("roomNumberId").value="";     //这个id的文本框的值 将会清空
-                   document.getElementById("roomNumberId").focus();      // 给这个id的文本框提供焦点
-                   document.getElementById("divOne").style.display="block"; //显示
-              }else{ }
-          },
-          error: function(data) { }
-      });
-     }
+     //if(value!=""){
+     //  $.ajax({                                                      
+     //     cache:false,                                             //是否使用缓存提交 如果为TRUE 会调用浏览器的缓存 而不会提交
+      //    type: "POST",                                           //上面3行都是必须要的
+      //    url: '${ctx}/RoomSet/YZ.do',       //地址 type 带参数
+      //    data:"roomNumber="+value,                         // IDCardValue 自定义的。相当于name把值赋予给 他可以在servlet 获取
+       //   async:false,                                          // 是否 异步 提交
+       //   success: function (result) {                          // 不出现异常 进行立面方
+       //       if(result>=1){                                  
+        //           alert("已存在此房间号，请另取房间号！");                     //提示框
+        //           document.getElementById("roomNumberId").value="";     //这个id的文本框的值 将会清空
+        //           document.getElementById("roomNumberId").focus();      // 给这个id的文本框提供焦点
+        //           document.getElementById("divOne").style.display="block"; //显示
+        //      }else{ }
+        //  },
+        //  error: function(data) { }
+      //});
+     //}
    }
    
     function deletefunction(){
@@ -340,89 +405,89 @@
    //验证
    function onchangeOne(){
      //房间号 
-     if(document.getElementById("roomNumberId").value!=""){
-       document.getElementById("divOne").style.display="none";
-     }else{
-       document.getElementById("divOne").style.display="block"; //显示
-     }
+   //  if(document.getElementById("roomNumberId").value!=""){
+   //    document.getElementById("divOne").style.display="none";
+   //  }else{
+   //    document.getElementById("divOne").style.display="block"; //显示
+   //  }
      //床位数
-     if(document.getElementById("roomAmountId").value!=""){
-       document.getElementById("divTwo").style.display="none";
-       if(!document.getElementById("roomAmountId").value.trim().match("^[0-9]*[1-9][0-9]*$"))
-       {
-          document.getElementById("roomAmountId").focus();
-          document.getElementById("roomAmountId").value="";
-          document.getElementById("divTwo").style.display="block"; //显示
-          alert("床位数:请输入正整数");
-       }
-     }else{
-       document.getElementById("divTwo").style.display="block"; //显示
-     }
+    // if(document.getElementById("roomAmountId").value!=""){
+     //  document.getElementById("divTwo").style.display="none";
+     //  if(!document.getElementById("roomAmountId").value.trim().match("^[0-9]*[1-9][0-9]*$"))
+    //   {
+     //     document.getElementById("roomAmountId").focus();
+     //     document.getElementById("roomAmountId").value="";
+    //      document.getElementById("divTwo").style.display="block"; //显示
+     //     alert("床位数:请输入正整数");
+     //  }
+    // }else{
+     //  document.getElementById("divTwo").style.display="block"; //显示
+    // }
      //标准房价/天 
-     if(document.getElementById("standardPriceDayId").value!=""){
-       document.getElementById("divThree").style.display="none";
-       if(!document.getElementById("standardPriceDayId").value.trim().match("^[0-9]+(\\.[0-9]+)?$"))
-       {
-          document.getElementById("standardPriceDayId").focus();
-          document.getElementById("standardPriceDayId").value="";
-          document.getElementById("divThree").style.display="block"; //显示
-          alert("标准房价/天 :请输入正数");
-       }
-     }else{
-       document.getElementById("divThree").style.display="block"; //显示
-     }
+    // if(document.getElementById("standardPriceDayId").value!=""){
+     //  document.getElementById("divThree").style.display="none";
+     //  if(!document.getElementById("standardPriceDayId").value.trim().match("^[0-9]+(\\.[0-9]+)?$"))
+     //  {
+      //    document.getElementById("standardPriceDayId").focus();
+      //    document.getElementById("standardPriceDayId").value="";
+      //    document.getElementById("divThree").style.display="block"; //显示
+      //    alert("标准房价/天 :请输入正数");
+     //  }
+    // }else{
+     //  document.getElementById("divThree").style.display="block"; //显示
+    // }
      //标准房价/小时
-     if(document.getElementById("standardPriceId").value!=""){
-       document.getElementById("divFour").style.display="none";
-       if(!document.getElementById("standardPriceId").value.trim().match("^[0-9]+(\\.[0-9]+)?$"))
-       {
-          document.getElementById("standardPriceId").focus();
-          document.getElementById("standardPriceId").value="";
-          document.getElementById("divFour").style.display="block"; //显示
-          alert("标准房价/小时:请输入正数");
-       }
-     }else{
-       document.getElementById("divFour").style.display="block"; //显示
-     }
+    // if(document.getElementById("standardPriceId").value!=""){
+    //   document.getElementById("divFour").style.display="none";
+     //  if(!document.getElementById("standardPriceId").value.trim().match("^[0-9]+(\\.[0-9]+)?$"))
+      // {
+     //     document.getElementById("standardPriceId").focus();
+     //     document.getElementById("standardPriceId").value="";
+      //    document.getElementById("divFour").style.display="block"; //显示
+      //    alert("标准房价/小时:请输入正数");
+     //  }
+     //}else{
+     //  document.getElementById("divFour").style.display="block"; //显示
+    // }
      //时长限制（小时）
-     if(document.getElementById("maxDurationId").value!=""){
-       document.getElementById("divFive").style.display="none";
-       if(!document.getElementById("maxDurationId").value.trim().match("^[0-9]+(\\.[0-9]+)?$"))
-       {
-          document.getElementById("maxDurationId").focus();
-          document.getElementById("maxDurationId").value="";
-          document.getElementById("divFive").style.display="block"; //显示
-          alert("时长限制（小时）:请输入正数");
-       }
-     }else{
-       document.getElementById("divFive").style.display="block"; //显示
-     }
+    // if(document.getElementById("maxDurationId").value!=""){
+     //  document.getElementById("divFive").style.display="none";
+      // if(!document.getElementById("maxDurationId").value.trim().match("^[0-9]+(\\.[0-9]+)?$"))
+     //  {
+      //    document.getElementById("maxDurationId").focus();
+      //    document.getElementById("maxDurationId").value="";
+       //   document.getElementById("divFive").style.display="block"; //显示
+       //   alert("时长限制（小时）:请输入正数");
+       //}
+    // }else{
+    //   document.getElementById("divFive").style.display="block"; //显示
+    // }
      //首段价格
-     if(document.getElementById("firstPriceId").value!=""){
-       document.getElementById("divSix").style.display="none";
-       if(!document.getElementById("firstPriceId").value.trim().match("^[0-9]+(\\.[0-9]+)?$"))
-       {
-          document.getElementById("firstPriceId").focus();
-          document.getElementById("firstPriceId").value="";
-          document.getElementById("divSix").style.display="block"; //显示
-          alert("首段价格:请输入正数");
-       }
-     }else{
-       document.getElementById("divSix").style.display="block"; //显示
-     }
+     //if(document.getElementById("firstPriceId").value!=""){
+      // document.getElementById("divSix").style.display="none";
+      // if(!document.getElementById("firstPriceId").value.trim().match("^[0-9]+(\\.[0-9]+)?$"))
+      // {
+      //    document.getElementById("firstPriceId").focus();
+       //   document.getElementById("firstPriceId").value="";
+      //    document.getElementById("divSix").style.display="block"; //显示
+      //    alert("首段价格:请输入正数");
+      // }
+     //}else{
+     //  document.getElementById("divSix").style.display="block"; //显示
+     //}
      //首段时长（小时）
-     if(document.getElementById("firstDurationId").value!=""){
-       document.getElementById("divSeven").style.display="none";
-       if(!document.getElementById("firstDurationId").value.trim().match("^[0-9]+(\\.[0-9]+)?$"))
-       {
-          document.getElementById("firstDurationId").focus();
-          document.getElementById("firstDurationId").value="";
-          document.getElementById("divSeven").style.display="block"; //显示
-          alert("首段时长（小时）:请输入正数");
-       }
-     }else{
-       document.getElementById("divSeven").style.display="block"; //显示
-     }
+    // if(document.getElementById("firstDurationId").value!=""){
+      // document.getElementById("divSeven").style.display="none";
+     //  if(!document.getElementById("firstDurationId").value.trim().match("^[0-9]+(\\.[0-9]+)?$"))
+     //  {
+     //     document.getElementById("firstDurationId").focus();
+     //     document.getElementById("firstDurationId").value="";
+      //    document.getElementById("divSeven").style.display="block"; //显示
+      //    alert("首段时长（小时）:请输入正数");
+     //  }
+     //}else{
+      // document.getElementById("divSeven").style.display="block"; //显示
+     //}
    }
    
    

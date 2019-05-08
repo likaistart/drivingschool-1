@@ -102,7 +102,7 @@
 
 
 					<li>
-						<a id="roomManageId" onclick="roomManage()" class="dropdown-toggle">
+						<a id="studentManageId" onclick="studentManage()" class="dropdown-toggle">
 							<i class="icon-home"></i>
 							<span class="menu-text">学员管理 </span>
 
@@ -111,7 +111,7 @@
 
 						<ul class="submenu">
 							<li>
-								<a id="roomSetId" onclick="roomSet()">
+								<a id="studentSetId" onclick="studentSet()">
 									<i class="icon-double-angle-right"></i>
 									<span>学员基本设置</span>
 								</a>
@@ -196,8 +196,10 @@
 				<div class="breadcrumbs" id="breadcrumbs">
 					<ul class="breadcrumb">
 						<li>
-							<i class="icon-home home-icon"></i>
-							<a id="bigGuide" href="#"></a>
+							<a id="homeButton" href="${ctx}/Login/tomain.do">
+							    <i class="icon-home home-icon"></i>
+							</a>
+							<a id="bigGuide" href="${ctx}/Main/todata.do"></a>
 
 							<span class="divider">
 								<i class="icon-angle-right arrow-icon"></i>
@@ -470,7 +472,7 @@
 			     document.getElementById("bigGuide").innerHTML=a+"";
 			     var s=document.getElementById("yingYeJinEId").getElementsByTagName('span')[0].innerHTML;
 			     document.getElementById("smallGuide").innerHTML=s+"";
-			     document.getElementById('Mainid').src='${ctx}/DateView/tolist.do';
+			     document.getElementById('Mainid').src='${ctx}/User/tolist.do';
 			}
 			
 			function passengerManage(){
@@ -492,18 +494,22 @@
 			     document.getElementById('Mainid').src='${ctx}/ReceiveTarget/tolist.do';
 			}
 			
-			function roomManage(){
-			    
-			}
-			function roomSet(){
-			     var a=document.getElementById("roomManageId").getElementsByTagName('span')[0].innerHTML;
+			function studentManage(){
+				var a=document.getElementById("studentManageId").getElementsByTagName('span')[0].innerHTML;
 			     document.getElementById("bigGuide").innerHTML=a+"";
-			     var s=document.getElementById("roomSetId").getElementsByTagName('span')[0].innerHTML;
+			     var s=document.getElementById("studentSetId").getElementsByTagName('span')[0].innerHTML;
 			     document.getElementById("smallGuide").innerHTML=s+"";
-			     document.getElementById('Mainid').src='${ctx}/RoomSet/tolist.do';
+			     document.getElementById('Mainid').src='${ctx}/Student/tolist.do';
+			}
+			function studentSet(){
+			     var a=document.getElementById("studentManageId").getElementsByTagName('span')[0].innerHTML;
+			     document.getElementById("bigGuide").innerHTML=a+"";
+			     var s=document.getElementById("studentSetId").getElementsByTagName('span')[0].innerHTML;
+			     document.getElementById("smallGuide").innerHTML=s+"";
+			     document.getElementById('Mainid').src='${ctx}/Student/tolist.do';
 			}
 			function commoditySet(){
-			     var a=document.getElementById("roomManageId").getElementsByTagName('span')[0].innerHTML;
+			     var a=document.getElementById("studentManageId").getElementsByTagName('span')[0].innerHTML;
 			     document.getElementById("bigGuide").innerHTML=a+"";
 			     var s=document.getElementById("commoditySetId").getElementsByTagName('span')[0].innerHTML;
 			     document.getElementById("smallGuide").innerHTML=s+"";
@@ -519,7 +525,7 @@
 			     document.getElementById("bigGuide").innerHTML=a+"";
 			     var s=document.getElementById("reservationsId").getElementsByTagName('span')[0].innerHTML;
 			     document.getElementById("smallGuide").innerHTML=s+"";
-			     document.getElementById('Mainid').src='${ctx}/Predetermine/tolist.do';
+			     document.getElementById('Mainid').src='${ctx}/Coach/tolist.do';
 			}
 			function personage(){
 			     var a=document.getElementById("stayManageId").getElementsByTagName('span')[0].innerHTML;

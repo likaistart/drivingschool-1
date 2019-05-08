@@ -1,5 +1,7 @@
 package com.df.service;
 
+import java.util.List;
+
 import  com.df.domain.Coach;
 
 public interface CoachService {
@@ -14,4 +16,6 @@ public interface CoachService {
     int updateByPrimaryKeySelective(Coach record);
 
     int updateByPrimaryKey(Coach record);
+    
+    List<Coach> selectAll();
 }

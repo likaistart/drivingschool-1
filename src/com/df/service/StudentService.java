@@ -13,6 +13,8 @@ public interface StudentService {
 	int insertSelective(Student record);
 
 	Student selectByPrimaryKey(Integer id);
+	
+	List<Student> selectByName(String textName);
 
 	List<Student> selectAll();
 

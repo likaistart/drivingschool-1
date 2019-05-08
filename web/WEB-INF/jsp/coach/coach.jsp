@@ -73,7 +73,7 @@
 		<div class="span5">
 			<div class="row-fluid">
 				<label class="labelroomnumber">姓名：</label>
-				<form action="${ctx}/Student/tolist.do" method="post"
+				<form action="${ctx}/RoomSet/tolist.do" method="post"
 					style="float: left;">
 					<input id="txtnameid" name="txtname"
 						class="textone roomnumberwidth"
@@ -118,10 +118,10 @@
 					<tr>
 						<th rowspan="2">选择</th>
 						<th rowspan="2">姓名</th>
-						<th rowspan="2">性别</th>
-						<th rowspan="2">报名日期</th>
+						<th rowspan="2">教练编号</th>
 						<th rowspan="2">证件号码</th>
 						<th rowspan="2">电话</th>
+						<th rowspan="2">MEMO</th>
 					</tr>
 				</thead>
 				<tbody id="tbody">
@@ -129,10 +129,10 @@
 						<tr>
 							<td><input type="checkbox" name="id" value="${item.id}"></td>
 							<td>${item.name}</td>
-							<td>${item.sex}</td>
-							<td>${item.signTime}</td>
+							<td>${item.coachCard}</td>
 							<td>${item.credentNo}</td>
 							<td>${item.phone}</td>
+							<td>${item.memo}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -144,8 +144,6 @@
 			</div>
 		</div>
 	</div>
-
-
 	<script type="text/javascript">
 		function addfunction() {
 			parent.document.getElementById('Mainid').src = '${ctx}/Student/toadd.do';
@@ -187,6 +185,5 @@
 
 		}
 	</script>
-
 </body>
 </html>
