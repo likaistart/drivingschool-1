@@ -6,8 +6,18 @@ public class User {
     private String username;
 
     private String password;
+    
+    private int type;
 
-    public Integer getId() {
+    public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	public Integer getId() {
         return id;
     }
 

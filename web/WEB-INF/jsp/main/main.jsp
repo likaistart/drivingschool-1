@@ -196,7 +196,7 @@
 				<div class="breadcrumbs" id="breadcrumbs">
 					<ul class="breadcrumb">
 						<li>
-							<a id="homeButton" href="${ctx}/Login/tomain.do">
+							<a id="homeButton" href="${ctx}/Main/toindex.do">
 							    <i class="icon-home home-icon"></i>
 							</a>
 							<a id="bigGuide" href="${ctx}/Main/todata.do"></a>

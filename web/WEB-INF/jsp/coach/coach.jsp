@@ -88,7 +88,9 @@
 				</form>
 			</div>
 		</div>
+		
 		<div class="span6">
+		  <c:if test="${ex==1}">
 			<div class="row-fluid">
 				<div class="span3">
 					<button class="btn btn-info btn-small textone" type="button"
@@ -109,6 +111,7 @@
 					</button>
 				</div>
 			</div>
+		  </c:if>  
 		</div>
 		<br>
 		<div class="dgvone">
