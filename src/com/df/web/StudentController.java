@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.df.service.CoachService;
 import com.df.service.StudentService;
 import com.df.domain.Student;
+import com.df.domain.User;
 import com.df.page.Page;
 
 @Controller
@@ -25,9 +26,6 @@ public class StudentController {
 
 	@Autowired
 	private StudentService studentService;
-
-	@Autowired
-	private CoachService coachService;
 
 	@RequestMapping("/tolist")
 	public ModelAndView list(HttpServletRequest request, Integer currentPage, String txtname) {
@@ -63,6 +61,51 @@ public class StudentController {
 		ModelAndView  mv= new ModelAndView("/student/add");
 		return mv;
 	}
+	
+	@RequestMapping("/toupdate")
+	public ModelAndView toupdate(){
+		ModelAndView  mv= new ModelAndView("/student/update");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/toupdateStudent", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView toupdateStudent(int userId,String userName,int sex,String signTime,String credentID,String phone,int coachId,String memo){
+		System.out.print(userId);
+		System.out.print(userName);
+		System.out.print(sex);
+		
+		System.out.print(credentID);
+		System.out.print(phone);
+		System.out.print(coachId);
+		System.out.print(memo);
+		
+		SimpleDateFormat sdf =   new SimpleDateFormat( "yyyy-MM-dd" );
+		Date signtime = new Date();
+		try {
+			signtime = sdf.parse(signTime);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.print(signtime);
+		ModelAndView mv;
+		Student record = new Student();
+		record.setId(userId);
+		record.setName(userName);
+		record.setSex(sex);
+		record.setSignTime(signtime);
+		record.setCredentNo(credentID);
+		record.setPhone(phone);
+		record.setCoachId(coachId);
+		record.setMemo(memo);
+		if(studentService.updateByPrimaryKey(record) == 1) {
+			mv = new ModelAndView("/student/student");
+		}else {
+			mv= new ModelAndView("/student/update");
+		}
+		return mv;
+	}
+	
 	@RequestMapping(value = "/toaddStudent", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView toaddStudent(int userId,String userName,int sex,String signTime,String credentID,String phone,int coachId,String memo) {
 		SimpleDateFormat sdf =   new SimpleDateFormat( "yyyy-MM-dd" );
@@ -83,6 +126,8 @@ public class StudentController {
 		record.setPhone(phone);
 		record.setCoachId(coachId);
 		record.setMemo(memo);
+		User user = new User();
+		user.setUsername(userName);
 		if(studentService.insert(record) == 1) {
 			mv = new ModelAndView("/student/student");
 		}else {
